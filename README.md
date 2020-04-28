@@ -1,2 +1,2 @@
-# Programming-in-C-C-environment
+# Programming-in-C/C++ environment
 From a similarly named class
