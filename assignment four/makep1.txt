@@ -1,0 +1,2 @@
+a4p1: a4p1.c
+	gcc a4p1.c -o a4p1
