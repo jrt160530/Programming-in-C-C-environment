@@ -1,0 +1,7 @@
+use maxdb;
+
+select name from people 
+where store = ( 
+select number from stores 
+where city = 'new york'
+);

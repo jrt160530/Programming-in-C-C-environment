@@ -1,0 +1,2 @@
+mysh2: mysh2.c
+	gcc mysh2.c -o mysh2

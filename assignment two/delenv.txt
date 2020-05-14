@@ -1,0 +1,45 @@
+function delenv(){
+#
+#This function takes 2 arguments
+#arg1 = name of VARIABLE
+#arg2 = name of element to delete to variable.
+#
+
+#this statement evauluates "echo \$$1"
+#basically $(arg1) to reference VARIABLE passed
+var1=$(eval "echo \$$1")
+NAME=$1
+ELE=$2
+
+#These three lines check for matching solutions.
+#Let : sepearte elements
+#Three cases    1. :middle:
+#               2. ^beggining
+#               3. end$
+
+var2=$(echo $var1 | grep -o ":$2:")
+var3=$(echo $var1 | grep -o "^$2:")
+var4=$(echo $var1 | grep -o ":$2$")
+var5=$(echo $var1 | grep -o "$2")
+
+
+#Use the sed command to remove the matching pattern
+#Follows same convention as above for location of element
+if [ -n "$var2" ]
+then
+        var1=$(echo "$var1" | sed "s|$2:||g")
+        export $NAME="$var1"
+	echo "match removed"
+elif [ -n "$var3" ]; then
+        export $NAME=$(echo "$var1" | sed "s|^$2:||")
+        echo "match removed"
+elif [ -n "$var4" ]; then
+        export $NAME=$(echo "$var1" | sed "s|:$2$||")
+        echo "match removed"
+elif [ -n "$var5" ]; then
+	export $NAME=$(echo "$var1" | sed "s|$2||")
+        echo "match removed"
+else
+        echo "no match"
+fi
+}

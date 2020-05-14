@@ -1,0 +1,8 @@
+use maxdb;
+create table stores (
+name varchar(20), 
+number integer, 
+city varchar(20)
+);
+insert into stores values ('headquarters', 4, 'new york'), ('midwest', 5, 'chicago'), ('west coast', 6, 'san francisco');
+select * from stores;

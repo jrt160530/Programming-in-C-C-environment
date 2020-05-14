@@ -1,0 +1,6 @@
+USE maxdb;
+
+
+
+
+LOAD DATA LOCAL INFILE '/home/j123/addfile' INTO TABLE people;

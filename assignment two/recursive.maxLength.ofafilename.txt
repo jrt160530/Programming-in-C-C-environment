@@ -1,0 +1,26 @@
+ function rmaxLength() { 
+
+ if [ ! -d "$1" ]; then
+ 	echo "Not a directory" 
+	return 1	
+fi
+
+length=0
+longest=""
+#(/bin/ls $1) runs ls on the the arg passed to $1
+#for filename in $(..) runs every line
+#in the do expression
+for fileName in $(eval ls -R $1) 
+ 	do
+ 	varName=${#fileName} 
+
+if [ $varName -gt $length ] 
+then 
+	length=$varName
+	longest=$fileName 
+fi
+
+ done 
+	echo "The longest filename is: $length characters"
+	echo "$longest "
+}

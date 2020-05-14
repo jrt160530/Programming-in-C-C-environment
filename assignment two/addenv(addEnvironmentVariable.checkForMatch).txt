@@ -1,0 +1,35 @@
+function addenv(){
+#
+#This function takes 2 arguments
+#arg1 = name of VARIABLE
+#arg2 = name of element to add to variable.
+#
+
+#this statement evauluates "echo \$$1"
+#basically $(arg1) to reference VARIABLE passed
+var1=$(eval "echo \$$1")
+NAME=$1
+ELE=$2
+
+#These three lines check for matching solutions.
+#Let : sepearte elements
+#Three cases    1. :middle:
+#               2. ^beggining
+#               3. end$
+var2=$(echo $var1 | grep -o ":$2:")
+var3=$(echo $var1 | grep -o "^$2:")
+var4=$(echo $var1 | grep -o ":$2$")
+
+#checks if variables are empty.
+#if empty no matches otherwise matched
+if [ -z "$var2" -a -z "$var3" -a -z "$var4" ]
+then
+        echo "no match"
+        var1="$2:$var1"
+        export $NAME="$var1"
+else
+        echo "match"
+fi
+}
+
+

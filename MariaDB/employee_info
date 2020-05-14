@@ -1,0 +1,60 @@
+#! /bin/bash
+#
+# Script to display employee information
+#
+# Make sure user is authorized: Get database password
+#
+echo -n "Enter password for maxdb database: "
+stty -echo
+read pw
+stty echo
+echo
+echo
+
+# Check for valid password
+#
+mysql -u max -p$pw maxdb > /dev/null 2>&1 < /dev/null
+if [ $? -ne 0 ]    
+	then        
+		echo "Bad password."        
+		exit 1
+fi
+
+# Display list of employees for user to select from
+#
+echo "The following people are employed by the company:"
+mysql -u max -p$pw --skip-column-names maxdb <<+
+SELECT name FROM people ORDER BY name;
++
+echo
+echo -n "Which employee would you like information about? "
+read emp
+
+# Query for store name
+#
+storename=$(mysql -u max -p$pw --skip-column-names maxdb <<+
+SELECT stores.name FROM people, stores WHERE store = number AND people.name 
+= "$emp";
++
+)
+
+# If null, the user entered a bad employee name
+#
+if [ "$storename" = "" ]    
+	then        
+		echo "Not a valid name."        
+		exit 1
+fi
+
+# Query for city name
+#
+storecity=$(mysql -u max -p$pw --skip-column-names maxdb <<+
+SELECT city FROM people, stores WHERE store = number AND people.name = 
+"$emp";
++
+)
+
+# Display report
+#
+echo
+echo $emp works at the $storename store in $storecity

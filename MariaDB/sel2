@@ -1,0 +1,3 @@
+use maxdb;
+
+Select * from people order by name;
