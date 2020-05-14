@@ -1,0 +1,10 @@
+a5part1: a5server1 a5client1 a5client2 a5client3
+
+a5server1: a5server1.c
+	gcc a5server1.c -o a5server1 -lnsl -lpthread -lsqlite3 
+a5client1: a5client1.c
+	gcc a5client1.c -o a5client1
+a5client2: a5client2.c
+	gcc a5client1.c -o a5client1
+a5client3: a5client3.c
+	gcc a5client1.c -o a5client1
