@@ -1,0 +1,10 @@
+#!/bin/bash
+#
+#This script will output all the parameters
+#Each parameter will be on a newline
+#
+for params in $*
+do
+	echo "$params"
+done
+

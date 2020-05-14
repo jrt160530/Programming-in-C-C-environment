@@ -1,0 +1,7 @@
+#!/bin/bash
+#
+#This program shows how environmental variables work
+#
+echo "The PID of the process is: $$"
+echo "The value of myvar is: $myvar"
+

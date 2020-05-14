@@ -1,0 +1,15 @@
+#!/bin/bash
+#
+#This script prompts a user with >>
+#Uses an if then structure for 2 cases:
+#1.A string was entered 2. No string (null)
+#
+echo "Type anything into the next line"
+read -p ">>" varStr
+if [ ! -z "$varStr" ]
+then
+	echo "You entered: $varStr"
+else
+		echo "Where is your input"
+fi
+

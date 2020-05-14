@@ -1,0 +1,8 @@
+#!/bin/bash
+#
+#This script prompts user to enter name
+#Then displays username
+#
+read -p "Please enter your name: "
+echo "Hello $REPLY"
+

@@ -1,0 +1,8 @@
+#!/bin/bash
+#
+#This program prompts use to enter name
+#Then saves name to a file "PID".name
+#
+read -p "Please enter your name: " varName
+echo "$varName" > $$.name
+

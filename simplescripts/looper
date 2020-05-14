@@ -1,0 +1,10 @@
+#!/bin/bash
+#
+#This program will display all the parameters
+#Each parameter will be on a newline
+#
+for arg
+do
+	echo $arg
+done
+
