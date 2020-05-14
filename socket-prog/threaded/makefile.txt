@@ -1,0 +1,7 @@
+week13: conServerThread Client
+
+conServerThread: conServerThread.c
+	gcc conServerThread.c -o conServerThread -lnsl -lpthread
+	
+Client: Client.c
+	gcc Client.c -o Client
