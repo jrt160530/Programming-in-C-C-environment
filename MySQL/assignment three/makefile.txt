@@ -1,0 +1,6 @@
+a3p1: a3p1t2 a3p1t3
+
+a3p1t2: a3p1t2.c
+	gcc a3p1t2.c -lsqlite3 -o a3p1t2
+a3p1t3: a3p1t3.c
+	gcc a3p1t3.c -lsqlite3 -o a3p1t3
